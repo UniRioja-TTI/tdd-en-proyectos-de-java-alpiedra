@@ -1,17 +1,15 @@
 package com.tt1.test;
-
-import java.util.Date;
-
 public class ToDo {
     private String nombre;
     private String descripcion;
     private String fecha;
     private Boolean completado;
-    public ToDo(String n, String d, String f, Boolean c){
+    public ToDo() {}
+    public ToDo(String n, String d, String f){
         this.nombre=n;
         this.descripcion=d;
         this.fecha=f;
-        this.completado=c;
+        this.completado=false;
     }
     public String getNombre(){
         return this.nombre;
