@@ -1,34 +1,41 @@
 package com.tt1.test;
-
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Repositorio {
+
     private DBStub db;
+
     public Repositorio(DBStub db) {
-        this.db=db;
+        this.db = db;
     }
 
     public boolean guardarTodo(ToDo todo) {
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        return db.crearTodo(todo);
     }
 
     public ToDo encontrarTodo(String nombre) {
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        return db.buscarTodo(nombre);
     }
 
-    public boolean marcarCompletada(String nombre) {
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+    public boolean marcarComoCompletada(String nombre) {
+        ToDo todo = db.buscarTodo(nombre);
+        if (todo == null) return false;
+        todo.setCompletado(true);
+        return db.actualizarTodo(todo);
     }
 
-    public List<ToDo> pendientes() {
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+    public List<ToDo> obtenerPendientes() {
+        return db.getTodos().stream()
+                .filter(t -> !t.getCompletado())
+                .collect(Collectors.toList());
     }
 
     public boolean guardarEmail(String email) {
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        return db.añadirEmail(email);
     }
 
     public List<String> getEmails() {
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        return db.getEmails();
     }
 }
