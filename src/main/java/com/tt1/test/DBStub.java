@@ -10,30 +10,35 @@ public class DBStub {
     private List<String> emails = new ArrayList<>();
 
     public boolean crearTodo(ToDo todo) {
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        if (todo == null || todo.getNombre() == null) return false;
+        tareas.put(todo.getNombre(), todo);
+        return true;
     }
 
     public ToDo buscarTodo(String nombre) {
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        return tareas.get(nombre);
     }
 
     public List<ToDo> getTodos() {
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        return new ArrayList<>(tareas.values());
     }
 
     public boolean actualizarTodo(ToDo todo) {
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        if (!tareas.containsKey(todo.getNombre())) return false;
+        tareas.put(todo.getNombre(), todo);
+        return true;
     }
 
     public boolean eliminarTodo(String nombre) {
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        return tareas.remove(nombre) != null;
     }
-
     public boolean añadirEmail(String email) {
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        if (email == null || email.isEmpty()) return false;
+        emails.add(email);
+        return true;
     }
 
     public List<String> getEmails() {
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        return new ArrayList<>(emails);
     }
 }
