@@ -1,6 +1,6 @@
 package com.tt1.test;
 
-public class MailerStub {
+public class MailerStub implements IMailer{
     private String dir;
     private String mensaje;
     public MailerStub(String dir, String mensaje){

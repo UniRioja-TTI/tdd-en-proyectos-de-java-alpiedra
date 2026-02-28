@@ -1,8 +1,8 @@
 package com.tt1.test;
 import java.util.List;
 import java.util.stream.Collectors;
-
-public class Repositorio {
+import com.tt1.test.IRepositorio;
+public class Repositorio implements IRepositorio{
 
     private DBStub db;
 
